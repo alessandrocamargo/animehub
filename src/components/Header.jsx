@@ -2,11 +2,9 @@ import { useState } from 'react'
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
-
   return (
     <header className="bg-slate-900 text-white">
       <nav className="container mx-auto flex items-center justify-between px-4 py-4">
-        {/* Logo */}
         <a href="/" className="text-xl font-bold text-orange-400">
           AnimeHub
         </a>
@@ -20,10 +18,7 @@ function Header() {
         </ul>
 
         {/* Botão hambúrguer - visível só em mobile */}
-        <button
-          className="sm:hidden text-2xl"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
+        <button className="sm:hidden text-2xl" onClick={() => setMenuOpen(!menuOpen)}>
           ☰
         </button>
       </nav>

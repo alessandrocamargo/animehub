@@ -7,5 +7,4 @@ function AnimeCard({ anime }) {
         </div>
     )
 }
-
 export default AnimeCard
