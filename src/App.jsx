@@ -24,7 +24,8 @@ function App() {
       <Header />
       <main className="container mx-auto px-4 py-8">
         
-        <h2>Mais Bem Avaliados</h2>
+        <section className='space-x-4 space-y-4'>
+          <h2 className='font-bold text-orange-500 text-center'>Mais Bem Avaliados</h2>
         {topAnimeLoading && <p>Loading...</p>}
         {topAnimeError && (
           <div>
@@ -33,8 +34,10 @@ function App() {
           </div>
         )}
         {!topAnimeLoading && !topAnimeError && <AnimeGrid animes={topAnimeData} />}
+        </section>
         
-        <h2>Mais Populares</h2>
+        <section className='space-x-4 space-y-2'>
+        <h2 className='font-bold text-orange-500 text-center p-4'>Mais Populares</h2>
         {popularAnimeLoading && <p>Loading...</p>}
         {popularAnimeError && (
           <div>
@@ -43,8 +46,10 @@ function App() {
           </div>
         )}
         {!popularAnimeLoading && !popularAnimeError && <AnimeGrid animes={popularAnimeData} />}
+        </section>
 
-        <h2>Temporada Atual</h2>
+        <section className='space-x-4 space-y-2'>
+          <h2 className='font-bold text-orange-500 text-center p-4'>Temporada Atual</h2>
         {currentSeasonLoading && <p>Loading...</p>}
         {currentSeasonError && (
           <div>
@@ -53,6 +58,7 @@ function App() {
           </div>
         )}
         {!currentSeasonLoading && !currentSeasonError && <AnimeGrid animes={currentSeasonData} />}
+        </section>
       </main>
       <Footer />
     </>
