@@ -9,8 +9,8 @@ import { useCallback } from 'react'
 function App() {
   const fetchFn = useCallback(() => getTopAnime(), [])
   const fetchPopularFn = useCallback(() => getTopAnime('bypopularity'), [])
-  const { data: topAnimeData, loading: topAnimeLoading, error: topAnimeError, fetchData: fetchTopAnime } = useFetch(fetchFn)
-  const { data: popularAnimeData, loading: popularAnimeLoading, error: popularAnimeError, fetchData: fetchPopularAnime } = useFetch(fetchPopularFn)
+  const { data: topAnimeData, loading: topAnimeLoading, error: topAnimeError, fetchData:fetchTopAnime } = useFetch(fetchFn)
+  const { data: popularAnimeData, loading: popularAnimeLoading, error: popularAnimeError, fetchData:fetchPopularAnime } = useFetch(fetchPopularFn)
  
 
   

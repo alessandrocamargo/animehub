@@ -5,7 +5,6 @@ export const useFetch = (fetchFunction) => {
     const [error, setError] = useState(null);
 
     const fetchData = async () => {
-        const fetchData = async () => {
             setLoading(true);
             setError(null);
             try {
@@ -16,11 +15,10 @@ export const useFetch = (fetchFunction) => {
             } finally {
                 setLoading(false);
             }
-        };
-    }
+    };
     useEffect(() => {   
         fetchData();
     }, [fetchFunction]);
 
-    return { fetchData, data, loading, error };
+    return { fetchData,data, loading, error };
 }
