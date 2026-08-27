@@ -2,15 +2,19 @@ import './index.css'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import AnimeGrid from './components/AnimeGrid/AnimeGrid'
-import { getTopAnime } from './services/jikan'
+import { getTopAnime, getCurrentSeason } from './services/jikan'
 import { useFetch } from './hooks/useFetch'
 import { useCallback } from 'react'
+
 
 function App() {
   const fetchFn = useCallback(() => getTopAnime(), [])
   const fetchPopularFn = useCallback(() => getTopAnime('bypopularity'), [])
   const { data: topAnimeData, loading: topAnimeLoading, error: topAnimeError, fetchData:fetchTopAnime } = useFetch(fetchFn)
   const { data: popularAnimeData, loading: popularAnimeLoading, error: popularAnimeError, fetchData:fetchPopularAnime } = useFetch(fetchPopularFn)
+
+  const fetchCs = useCallback(() => getCurrentSeason(), [])
+  const {data: currentSeasonData, loading: currentSeasonLoading, error: currentSeasonError, fetchData: fetchCurrentSeason} = useFetch(fetchCs)
  
 
   
@@ -19,6 +23,7 @@ function App() {
     <>
       <Header />
       <main className="container mx-auto px-4 py-8">
+        
         <h2>Mais Bem Avaliados</h2>
         {topAnimeLoading && <p>Loading...</p>}
         {topAnimeError && (
@@ -28,6 +33,7 @@ function App() {
           </div>
         )}
         {!topAnimeLoading && !topAnimeError && <AnimeGrid animes={topAnimeData} />}
+        
         <h2>Mais Populares</h2>
         {popularAnimeLoading && <p>Loading...</p>}
         {popularAnimeError && (
@@ -37,6 +43,16 @@ function App() {
           </div>
         )}
         {!popularAnimeLoading && !popularAnimeError && <AnimeGrid animes={popularAnimeData} />}
+
+        <h2>Temporada Atual</h2>
+        {currentSeasonLoading && <p>Loading...</p>}
+        {currentSeasonError && (
+          <div>
+            <p>Não foi possível carregar os animes.</p>
+            <button onClick={fetchCurrentSeason}>Tentar novamente</button>
+          </div>
+        )}
+        {!currentSeasonLoading && !currentSeasonError && <AnimeGrid animes={currentSeasonData} />}
       </main>
       <Footer />
     </>

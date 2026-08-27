@@ -7,3 +7,13 @@ export async function getTopAnime(filter = '') {
     }
     return data.data;
 }
+
+export async function getCurrentSeason() {
+    const url = 'https://api.jikan.moe/v4/seasons/now'
+    const response = await fetch(url);
+    const data = await response.json();
+    if (!response.ok) {
+        throw new Error(data.message || 'Falha em carregar os animes');
+    }
+    return data.data;
+}
